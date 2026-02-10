@@ -1,1 +1,121 @@
+# Nikto Command Cheatsheet (With Meanings)
 
+Nikto is an open-source web server vulnerability scanner used to identify
+misconfigurations, outdated software, and common web vulnerabilities.
+
+---
+
+## 🔍 Basic Scanning Commands
+
+### Scan a website
+```bash
+nikto -h http://example.com
+Meaning:
+Scans the target website for common vulnerabilities and server issues.
+
+Scan using IP address
+nikto -h 192.168.1.10
+Meaning:
+Runs a Nikto scan directly on a server using its IP address.
+
+Scan a specific port
+nikto -h example.com -p 8080
+Meaning:
+Scans the web service running on port 8080 instead of the default port.
+
+🔐 HTTPS / SSL Commands
+Scan HTTPS website
+nikto -h https://example.com
+Meaning:
+Scans a website that uses SSL/TLS (HTTPS).
+
+Force SSL scan
+nikto -h example.com -ssl
+Meaning:
+Forces Nikto to treat the target as an SSL-enabled website.
+
+📂 Output & Reporting
+Save output to a text file
+nikto -h example.com -o result.txt
+Meaning:
+Stores scan results in a text file for documentation.
+
+Save output in HTML format
+nikto -h example.com -o report.html -Format html
+Meaning:
+Generates a browser-readable HTML vulnerability report.
+
+Save output in JSON format
+nikto -h example.com -o report.json -Format json
+Meaning:
+Exports scan results in JSON format for automation or analysis.
+
+🎯 Target Customization
+Scan multiple ports
+nikto -h example.com -p 80,443,8080
+Meaning:
+Scans multiple web services running on different ports.
+
+Use a custom User-Agent
+nikto -h example.com -useragent Mozilla/5.0
+Meaning:
+Makes Nikto appear as a normal browser to bypass basic filters.
+
+Use proxy (Burp/ZAP)
+nikto -h example.com -useproxy http://127.0.0.1:8080
+Meaning:
+Routes Nikto traffic through a proxy for inspection.
+
+⚙️ Scan Tuning
+Tune scan types
+nikto -h example.com -Tuning 123
+Meaning:
+Runs only selected categories of vulnerability checks.
+
+Tuning Codes:
+
+1 – Interesting files
+
+2 – Misconfiguration
+
+3 – Default files
+
+4 – Injection
+
+5 – XSS
+
+Scan only Injection & XSS
+nikto -h example.com -Tuning 4,5
+Meaning:
+Focuses only on Injection and Cross-Site Scripting vulnerabilities.
+
+🚀 Advanced Commands
+Update Nikto database
+nikto -update
+Meaning:
+Updates vulnerability signatures and plugins.
+
+Virtual host scan
+nikto -h example.com -vhost test.example.com
+Meaning:
+Scans a specific virtual host hosted on the same server.
+
+Use IDS evasion technique
+nikto -h example.com -evasion 1
+Meaning:
+Attempts to bypass intrusion detection systems.
+
+🛡️ Stealth & Safety
+Slow scan to avoid detection
+nikto -h example.com -delay 5
+Meaning:
+Adds a delay between requests to reduce detection chances.
+
+Disable DNS lookup
+nikto -h example.com -nodns
+Meaning:
+Prevents DNS resolution to speed up scanning.
+
+📝 One-Line Summary
+Nikto is used in VAPT to detect web server misconfigurations, insecure files,
+outdated software, and common web vulnerabilities.
